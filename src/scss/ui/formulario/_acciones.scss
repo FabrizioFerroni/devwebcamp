@@ -1,0 +1,27 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.acciones {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+    span {
+        font-size: 1.4rem;
+        font-weight: v.$delgada;
+        color: v.$negro;
+    }
+    &__enlace {
+        font-size: 1.4rem;
+        font-weight: v.$delgada;
+        color: v.$azul;
+        &--confirmar {
+            @include m.boton(v.$secundario, v.$blanco);
+            border-radius: .5rem;
+            font-size: 1.4rem;
+        }
+    }
+    &--centrar {
+        @extend .acciones;
+        justify-content: center;
+    }
+    margin-bottom: calc(v.$separacion / 2);
+}

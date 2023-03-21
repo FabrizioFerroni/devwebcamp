@@ -1,0 +1,9 @@
+import './horas.js';
+import './ponente.js';
+import './tags.js';
+import './input.js';
+import './mapa.js';
+import './slider.js';
+import './registro.js';
+import './regalos.js';
+import './error.js';

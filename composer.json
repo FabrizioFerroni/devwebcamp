@@ -1,0 +1,21 @@
+{
+    "name": "fabrizioferroni/devwebcamp",
+    "description": "Proyecto PHP 8, MVC, SQL, BEM, SASS",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "MVC\\": "./",
+            "Controllers\\": "./controllers",
+            "Model\\": "./models",
+            "Classes\\": "./classes"
+        }
+    },
+    "authors": [{
+        "name": "Fabrizio Ferroni https://fabriziodev.ar "
+    }],
+    "require": {
+        "phpmailer/phpmailer": "^6.5",
+        "vlucas/phpdotenv": "^5.4",
+        "intervention/image": "^2.7"
+    }
+}

@@ -1,0 +1,216 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+.dashboard {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: v.$gris-claro;
+    &__header {
+        background-color: v.$gris-oscuro;
+        padding: 2rem;
+    }
+    &__header-grid {
+        display: flex;
+        flex-direction: column;
+        @include m.tablet {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center
+        }
+        // @include m.enlace;
+        color: v.$blanco;
+        text-transform: uppercase;
+        font-size: 1.4rem;
+        font-weight: v.$bold;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        span {
+            color: v.$azul;
+        }
+    }
+    &__logo {
+        @include m.logo;
+        @include m.texto-fluido(2rem, 3rem);
+    }
+    &__nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .dropdown {
+            position: relative;
+            width: 16.5rem;
+            filter: url(#goo);
+            &__face {
+                display: block;
+                position: relative;
+                padding: 1rem;
+            }
+            &__text {
+                color: v.$blanco;
+                text-transform: uppercase;
+                font-size: 1.4rem;
+                font-weight: v.$bold;
+                cursor: pointer;
+                span {
+                    color: v.$azul;
+                    &::selection {
+                        display: none;
+                    }
+                }
+                &::selection {
+                    display: none;
+                }
+            }
+            &__items {
+                background-color: darken(v.$gris-claro, 5);
+                color: v.$blanco;
+                position: absolute;
+                right: 0;
+                top: 50%;
+                width: 100%;
+                display: block;
+                visibility: hidden;
+                z-index: -1;
+                opacity: 0;
+                transition: all 0.4s cubic-bezier(0.93, 0.88, 0.1, 0.8);
+                border-radius: .5rem;
+                &:hover {
+                    background-color: darken(v.$blanco, 15);
+                    color: v.$blanco;
+                }
+                padding: 1rem;
+                form {
+                    input[type="submit"] {
+                        color: v.$gris-oscuro;
+                        &:hover {
+                            color: v.$azul;
+                        }
+                    }
+                }
+            }
+            &__arrow {
+                border-bottom: .2rem solid v.$blanco;
+                border-right: .2rem solid v.$blanco;
+                position: absolute;
+                top: 50%;
+                right: 3rem;
+                width: 1rem;
+                height: 1rem;
+                transform: rotate(45deg) translateY(-50%);
+                transform-origin: right;
+            }
+            input[type="checkbox"] {
+                display: none;
+                &:checked~.dropdown__items {
+                    top: calc(100% + .1rem);
+                    visibility: visible;
+                    opacity: 1;
+                }
+            }
+        }
+        svg {
+            display: none;
+        }
+    }
+    &__form {
+        display: flex;
+        justify-content: center;
+    }
+    &__submit--logout {
+        // @include m.boton(v.$gris-claro, v.$blanco);
+        // font-size: 1.4rem;
+        // border-radius: .5rem;
+        // @include m.enlace;
+        color: v.$blanco;
+        text-transform: uppercase;
+        font-size: 1.4rem;
+        font-weight: v.$bold;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        &:hover {
+            color: darken(v.$azul, 20);
+        }
+    }
+    &__grid {
+        display: flex;
+        flex: 1;
+        overflow-y: auto;
+    }
+    &__sidebar {
+        background-color: lighten(v.$gris-oscuro, 5);
+        width: 20rem;
+    }
+    &__menu {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    &__enlace {
+        color: lighten(v.$gris-oscuro, 40);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        transition: 300ms background-color ease-in-out, 300ms color ease, 300ms border-radius ease;
+        text-align: center;
+        &:hover,
+        &--activo {
+            border-radius: .5rem;
+            background-color: lighten(v.$gris-oscuro, 20);
+            color: v.$blanco;
+        }
+    }
+    &__icono {
+        font-size: 2rem;
+    }
+    &__menu-texto {
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        font-weight: v.$bold;
+        margin-top: 1.5rem;
+    }
+    &__contenido {
+        padding: 1rem 1rem 3rem 1rem;
+        width: 100%;
+        overflow-y: scroll;
+        @include m.tablet {
+            padding: 1rem 5rem 3rem 5rem;
+        }
+    }
+    &__contenedor-boton {
+        @include m.tablet {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 5rem;
+        }
+    }
+    &__boton {
+        @include m.boton(v.$azul, v.$blanco);
+        text-transform: uppercase;
+        font-size: 1.4rem;
+        border-radius: .5rem;
+        @include m.tablet {
+            width: auto;
+        }
+    }
+    &__contenedor {
+        @include m.shadow;
+        background-color: v.$blanco;
+        border-radius: .5rem;
+        padding: 2rem
+    }
+    &__formulario {
+        @extend .dashboard__contenedor;
+        @include m.contenedor-md;
+        margin-top: 1rem;
+        @include m.tablet {
+            margin-top: 0;
+        }
+    }
+    &__grafica {
+        @include m.contenedor-sm;
+    }
+}
